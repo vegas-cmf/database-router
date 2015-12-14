@@ -1,0 +1,29 @@
+{
+    "name": "vegas-cmf/database-router",
+    "type": "library",
+    "description": "Vegas CMF Database router",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sander Borgman",
+            "email": "sander@amsterdamstandard.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "ext-phalcon": ">=1.3.0,<2",
+        "phalcon/devtools": "1.3.x-dev",
+        "phalcon/incubator": "1.3.*",
+        "vegas-cmf/core" : "1.1.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*",
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vegas\\": "src/",
+            "Vegas\\Tests\\": "tests/"
+        }
+    }
+}
