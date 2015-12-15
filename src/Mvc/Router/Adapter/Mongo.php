@@ -13,7 +13,6 @@ use Phalcon\Mvc\Router;
  */
 class Mongo extends Router implements DI\InjectionAwareInterface
 {
-
     /**
      * Standard router constructor
      *
@@ -29,8 +28,31 @@ class Mongo extends Router implements DI\InjectionAwareInterface
 
     public function handle($uri = null)
     {
-        var_dump($uri); exit;
+        if (empty($uri)) {
+            $uri = $this->getRewriteUri();
+        }
 
-        parent::handle($uri);
+        $di = $this->getDI();
+        $routeManager = $di->get('databaseRouteManager');
+        $routes = $di->get('config')->get('routes', false);
+
+        $route = $routeManager->findByUrl($uri);
+
+        if ($route && $routes) {
+            $routeParams = $routes->get($route->route, false);
+
+            if ($routeParams) {
+                $this->_controller = $routeParams->controller;
+                $this->_action = $routeParams->action;
+                $this->_module = $routeParams->module;
+                $this->_params = [substr($uri, 1)];
+            } else {
+                throw new \Exception('Database route not configured');
+            }
+
+            return true;
+        }
+
+        return parent::handle($uri);
     }
 }
