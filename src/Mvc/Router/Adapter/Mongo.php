@@ -42,15 +42,15 @@ class Mongo extends Router implements DI\InjectionAwareInterface
             $routeParams = $routes->get($route->route, false);
 
             if ($routeParams) {
-                $this->_controller = $routeParams->controller;
-                $this->_action = $routeParams->action;
-                $this->_module = $routeParams->module;
-                $this->_params = [substr($uri, 1)];
+                $this->add($uri, [
+                    'module' => $routeParams->module,
+                    'controller' => $routeParams->controller,
+                    'action' => $routeParams->action,
+                    0 => substr($uri, 1)
+                ]);
             } else {
                 throw new \Exception('Database route not configured');
             }
-
-            return true;
         }
 
         return parent::handle($uri);

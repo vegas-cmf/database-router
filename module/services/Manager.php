@@ -35,7 +35,7 @@ class Manager implements InjectionAwareInterface
             $url = '/' . $url; // Prefix urls with /
         }
 
-        $routeModel = $dao->findByRoute($route, $ownerId);
+        $routeModel = $dao->findByRoute((string) $route, (string) $ownerId);
 
         if ( ! $routeModel) {
             // Create new route because it doesn't exist yet
