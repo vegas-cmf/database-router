@@ -39,7 +39,7 @@ class Mongo extends Router implements DI\InjectionAwareInterface
         $route = $routeManager->findByUrl($uri);
 
         if ($route && $routes) {
-            $routeParams = $routes->get($route->route, false);
+            $routeParams = $routes->get($route->name, false);
 
             if ($routeParams) {
                 $this->add($uri, [

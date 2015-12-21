@@ -20,16 +20,16 @@ class Route extends DefaultDao
     }
 
     /**
-     * @param string $route
-     * @param string $ownerId
+     * @param string $name
+     * @param string $identifier
      * @return RouteModel
      */
-    public static function findByRoute($route, $ownerId)
+    public static function findByNameAndIdentifier($name, $identifier)
     {
         return RouteModel::findFirst([
             'conditions' => [
-                'route' => $route,
-                'owner_id' => $ownerId
+                'name' => $name,
+                'identifier' => $identifier
             ]
         ]);
     }

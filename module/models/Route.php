@@ -5,13 +5,28 @@ use Vegas\MultiSite\CollectionAbstract;
 
 class Route extends CollectionAbstract
 {
-    public $route;
-    public $owner_id; // owner_id + route = unique key
+    public $name;
+    public $identifier; // identifier + route name = unique key
 
     public $url;
 
     public function _getSource()
     {
         return 'vegas_routes';
+    }
+
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

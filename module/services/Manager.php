@@ -21,11 +21,28 @@ class Manager implements InjectionAwareInterface
     }
 
     /**
-     * @param string $route
-     * @param string $ownerId
+     * @param $name
+     * @param $identifier
+     * @return string
+     */
+    public function getUrl($name, $identifier)
+    {
+        $dao = $this->getRouteDao();
+        $route = $dao->findByNameAndIdentifier((string) $name, (string) $identifier);
+
+        if ($route) {
+            return $route->url;
+        }
+
+        return '';
+    }
+
+    /**
+     * @param string $name
+     * @param string $identifier
      * @param string $url
      */
-    public function update($route, $ownerId, $url)
+    public function update($name, $identifier, $url)
     {
         $dao = $this->getRouteDao();
 
@@ -35,15 +52,15 @@ class Manager implements InjectionAwareInterface
             $url = '/' . $url; // Prefix urls with /
         }
 
-        $routeModel = $dao->findByRoute((string) $route, (string) $ownerId);
+        $routeModel = $dao->findByNameAndIdentifier((string) $name, (string) $identifier);
 
         if ( ! $routeModel) {
             // Create new route because it doesn't exist yet
             $routeModel = new Route();
         }
 
-        $routeModel->route = $route;
-        $routeModel->owner_id = (string) $ownerId;
+        $routeModel->name = $name;
+        $routeModel->identifier = (string) $identifier;
         $routeModel->url = $url;
 
         $routeModel->save();
