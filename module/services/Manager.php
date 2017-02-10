@@ -2,8 +2,8 @@
 namespace DatabaseRouter\Services;
 
 use DatabaseRouter\Models\Route;
-use Phalcon\DI\InjectionAwareInterface;
-use Vegas\DI\InjectionAwareTrait;
+use Phalcon\Di\InjectionAwareInterface;
+use Vegas\Di\InjectionAwareTrait;
 
 class Manager implements InjectionAwareInterface
 {
@@ -38,9 +38,10 @@ class Manager implements InjectionAwareInterface
     }
 
     /**
-     * @param string $name
-     * @param string $identifier
-     * @param string $url
+     * @param $name
+     * @param $identifier
+     * @param $url
+     * @return bool|Route
      */
     public function update($name, $identifier, $url)
     {
@@ -48,7 +49,7 @@ class Manager implements InjectionAwareInterface
 
         if (empty($url)) return false;
 
-        if ($url[0] !== '/') {
+        if (strpos($url, '/') !== 0) {
             $url = '/' . $url; // Prefix urls with /
         }
 

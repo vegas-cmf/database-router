@@ -1,7 +1,7 @@
 <?php
 namespace Vegas\Mvc\Router\Adapter;
 
-use Phalcon\DI;
+use Phalcon\Di;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\Router;
 
@@ -11,7 +11,7 @@ use Phalcon\Mvc\Router;
  *
  * @package Vegas\Mvc\Router\Adapter
  */
-class Mongo extends Router implements DI\InjectionAwareInterface
+class Mongo extends Router implements Di\InjectionAwareInterface
 {
     /**
      * Standard router constructor
