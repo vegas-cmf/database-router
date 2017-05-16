@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo.vegas-cmf-database-router.app
+    network_mode: "bridge"
+    environment:
+       - AUTH=no
+       - TERM=xterm-256color
+    volumes:
+       - ./:/opt
+       - ~/data/mongo.database-router.app:/data/db
+    restart: always
+
+  php:
+    image: amsdard/phalcon:1.3.6
+    container_name: php.vegas-cmf-database-router.app
+    network_mode: "bridge"
+    environment:
+       - TERM=xterm-256color
+    volumes:
+       - ./:/opt
+    links:
+       - mongo
+    restart: always

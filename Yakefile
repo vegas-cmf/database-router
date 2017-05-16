@@ -1,0 +1,12 @@
+## aliases
+composer: "docker run --rm -it  -v $(pwd):/opt
+          -v ~/.ssh:/home/php/.ssh -v ~/.docker-composer:/home/php/.composer
+          -v ~/.ssh:/root/.ssh -v ~/.docker-composer:/root/.composer
+          amsdard/composer composer --ignore-platform-reqs --working-dir=/opt $CMD"
+
+## tasks
+up: docker-compose up -d --force-recreate
+
+## commands
+php: docker exec -it php.database-router.app php $CMD
+phpunit: $BIN php ./vendor/bin/phpunit $CMD
