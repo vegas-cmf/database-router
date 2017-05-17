@@ -7,6 +7,7 @@ php:
 
 services:
   - mongodb
+  - memcached
 
 before_script:
   - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b master
