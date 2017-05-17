@@ -1,8 +1,8 @@
 <?php
 namespace DatabaseRouter\Models\Dao;
 
-use Vegas\Db\Dao\DefaultDao;
 use DatabaseRouter\Models\Route as RouteModel;
+use Vegas\Db\Dao\DefaultDao;
 
 class Route extends DefaultDao
 {
@@ -15,6 +15,10 @@ class Route extends DefaultDao
         return RouteModel::findFirst([
             'conditions' => [
                 'url' => $url
+            ],
+            'sort' => [
+                'priority' => -1,
+                'created_at' => -1
             ]
         ]);
     }
@@ -30,6 +34,10 @@ class Route extends DefaultDao
             'conditions' => [
                 'name' => $name,
                 'identifier' => $identifier
+            ],
+            'sort' => [
+                'priority' => -1,
+                'created_at' => -1
             ]
         ]);
     }
