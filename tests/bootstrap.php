@@ -42,10 +42,6 @@ class DiProvider
             return $dao->setDI($di);
         }, true);
 
-        $di->set('site', function() use ($di) {
-            return new \MultiSite\Models\Site();
-        }, true);
-
         \Phalcon\DI::setDefault($di);
     }
 

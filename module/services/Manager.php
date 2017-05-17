@@ -41,7 +41,7 @@ class Manager implements InjectionAwareInterface
      * @param string $name defined in Module config rule
      * @param string $identifier object ID
      * @param string $url relative URL started with /
-     * @param int $priority the lowest the more important
+     * @param int $priority the biggest the more important
      * @return bool|Route
      */
     public function update($name, $identifier, $url, $priority=10)
