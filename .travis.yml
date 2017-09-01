@@ -1,9 +1,12 @@
 language: php
 
+dist: trusty
+sudo: required
+
 php:
   - 5.5
   - 5.6
-  - 7
+  - 7.0
 
 services:
   - mongodb
@@ -12,7 +15,8 @@ services:
 before_script:
   - phpenv config-add tests/travis/php.ini
   - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b 3.2.x
-  - (cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && sudo make install && phpenv config-add ../unit-tests/ci/phalcon.ini)
+  - (cd cphalcon/build; bash install &>/dev/null)
+  - (phpenv config-add cphalcon/tests/_ci/phalcon.ini &> /dev/null)
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev
 
