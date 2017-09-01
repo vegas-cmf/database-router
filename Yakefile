@@ -8,5 +8,5 @@ composer: "docker run --rm -it  -v $(pwd):/opt
 up: docker-compose up -d --force-recreate
 
 ## commands
-php: docker exec -it php.database-router.app php $CMD
+php: docker exec -it php.vegas-cmf-database-router.app php $CMD
 phpunit: $BIN php ./vendor/bin/phpunit $CMD

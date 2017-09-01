@@ -14,7 +14,7 @@
         "ext-phalcon": "^3.0",
         "phalcon/incubator": "^3.0",
         "vegas-cmf/core" : "3.0.x-dev",
-        "vegas-cmf/dao": "*"
+        "vegas-cmf/dao": "3.0.x-dev"
     },
     "require-dev": {
         "phalcon/devtools": "^3.0",
