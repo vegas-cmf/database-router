@@ -1,13 +1,13 @@
 <?php
 namespace DatabaseRouter\Models;
 
-use Vegas\MultiSite\CollectionAbstract;
+use Vegas\Db\Decorator\CollectionAbstract;
 
 class Route extends CollectionAbstract
 {
     public $name;
     public $identifier; // identifier + route name = unique key
-
+    public $priority;
     public $url;
 
     public function _getSource()
@@ -28,5 +28,10 @@ class Route extends CollectionAbstract
     public function getUrl()
     {
         return $this->url;
+    }
+
+    public function getPriority()
+    {
+        return $this->priority;
     }
 }

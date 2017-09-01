@@ -38,13 +38,15 @@ class Manager implements InjectionAwareInterface
     }
 
     /**
-     * @param $name
-     * @param $identifier
-     * @param $url
+     * @param string $name defined in Module config rule
+     * @param string $identifier object ID
+     * @param string $url relative URL started with /
+     * @param int $priority the biggest the more important
      * @return bool|Route
      */
-    public function update($name, $identifier, $url)
+    public function update($name, $identifier, $url, $priority=10)
     {
+        /** @var \DatabaseRouter\Models\Dao\Route $dao */
         $dao = $this->getRouteDao();
 
         if (empty($url)) return false;
@@ -63,10 +65,28 @@ class Manager implements InjectionAwareInterface
         $routeModel->name = $name;
         $routeModel->identifier = (string) $identifier;
         $routeModel->url = $url;
+        $routeModel->priority = $priority;
 
         $routeModel->save();
 
         return $routeModel;
+    }
+
+    public function deleteByName($name)
+    {
+        /** @var \DatabaseRouter\Models\Dao\Route $dao */
+        $dao = $this->getRouteDao();
+
+        /** @var Route[] $routes */
+        $routes = $dao->find([
+            [
+                'name' => $name
+            ]
+        ]);
+
+        foreach ($routes as $route) {
+            $route->delete();
+        }
     }
 
     /**
