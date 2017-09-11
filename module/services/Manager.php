@@ -72,6 +72,19 @@ class Manager implements InjectionAwareInterface
         return $routeModel;
     }
 
+    public function delete($name, $identifier)
+    {
+        /** @var \DatabaseRouter\Models\Dao\Route $dao */
+        $dao = $this->getRouteDao();
+
+        /** @var Route $routeModel */
+        $routeModel = $dao->findByNameAndIdentifier((string) $name, (string) $identifier);
+
+        if ($routeModel) {
+            $routeModel->delete();
+        }
+    }
+
     public function deleteByName($name)
     {
         /** @var \DatabaseRouter\Models\Dao\Route $dao */
