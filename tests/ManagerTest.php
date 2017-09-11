@@ -82,7 +82,7 @@ class ManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($testRoute->getIdentifier(), 2);
     }
 
-    public function testPDelete()
+    public function testDelete()
     {
         $routeManager = $this->getRouteManager();
 
