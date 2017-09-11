@@ -17,7 +17,7 @@
         "vegas-cmf/dao": "3.0.x-dev"
     },
     "require-dev": {
-        "phalcon/devtools": "^3.0",
+        "phalcon/devtools": "v3.1",
         "phpunit/phpunit": "4.0.*",
         "satooshi/php-coveralls": "dev-master"
     },
