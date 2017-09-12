@@ -1,7 +1,7 @@
 <?php
 namespace DatabaseRouter\Models;
 
-use Vegas\Db\Decorator\CollectionAbstract;
+use Vegas\MultiSite\CollectionAbstract;
 
 class Route extends CollectionAbstract
 {

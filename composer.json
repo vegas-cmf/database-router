@@ -9,12 +9,21 @@
             "email": "sander@amsterdamstandard.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@bitbucket.org:amsdard/vegas-cmf-multi-site.git"
+        }
+    ],
     "require": {
         "php": "^5.5 || ^7.0",
         "ext-phalcon": "^3.0",
         "phalcon/incubator": "^3.0",
         "vegas-cmf/core" : "3.0.x-dev",
-        "vegas-cmf/dao": "3.0.x-dev"
+        "vegas-cmf/dao": "3.0.x-dev",
+        "vegas-cmf/multi-site": "dev-master",
+        "vegas-cmf/forms": "v3.0.x-dev",
+        "vegas-cmf/validation": "v3.0.x-dev"
     },
     "require-dev": {
         "phalcon/devtools": "v3.1",
